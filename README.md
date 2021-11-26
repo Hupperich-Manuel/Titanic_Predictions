@@ -31,9 +31,11 @@ With the LDA we are going to model the conditional distribution of the independe
 
 To justify the usage of the LDA, a part from having a AUC of 97%, i will point out three main points:
 * Having binary class, Y $\newtheorem{theorem}{Theorem} (0, 1)
+```JavaScript
 function isReal (k) {
   return typeof k === 'number' && isFinite(k);
 }
+```
 In our example we will
 
 
