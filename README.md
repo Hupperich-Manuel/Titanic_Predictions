@@ -39,7 +39,7 @@ function isReal (k) {
 In our example we will
 
 
-$x = y $
+$`a^2+b^2=c^2`$
 
 
 
