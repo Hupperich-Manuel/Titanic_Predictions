@@ -30,14 +30,13 @@ Firstly, there was a need to see how ensemble modelling perfromed on the data, a
 With the LDA we are going to model the conditional distribution of the independent variable Y (1,0), given the explainatory variables.
 
 To justify the usage of the LDA, a part from having a AUC of 97%, there are three reasons to point put:
-* Having binary class, <img src="https://render.githubusercontent.com/render/math?math=Y (0, 1)"> , thwey are considered to be well separated
+* Having binary class, <img src="https://render.githubusercontent.com/render/math?math=Y (0, 1)"> , they are considered to be well separated
+* Since the number of observations is relatively small and the distribution of features is approximatelly normal, the choose of LDA returns better results that with other binary classification models. Every feature is significant in the Jarque-Bera test and the distribution of the observation is randomly distributed between 0 and 1 (after dimensionality reduction).
+I,mages, jarque-bera and dispersion
+
+
 
 In our example we will
-
-
-![equation]$a^2+b^2=c^2$
-
-<img src="https://render.githubusercontent.com/render/math?math=Y (0, 1)">
 
 
 
