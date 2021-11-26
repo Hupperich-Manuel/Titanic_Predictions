@@ -39,7 +39,7 @@ function isReal (k) {
 In our example we will
 
 
-var x = 1
+$x = y $
 
 
 
