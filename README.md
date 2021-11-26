@@ -30,18 +30,14 @@ Firstly, there was a need to see how ensemble modelling perfromed on the data, a
 With the LDA we are going to model the conditional distribution of the independent variable Y (1,0), given the explainatory variables.
 
 To justify the usage of the LDA, a part from having a AUC of 97%, i will point out three main points:
-* Having binary class, Y $\newtheorem{theorem}{Theorem} (0, 1)
-```JavaScript
-function isReal (k) {
-  return typeof k === 'number' && isFinite(k);
-}
-```
+* Having binary class, <img src="https://render.githubusercontent.com/render/math?math=Y (0, 1)"> , thwey are considered to be well separated
+
 In our example we will
 
 
 ![equation]$a^2+b^2=c^2$
 
-<img src="https://render.githubusercontent.com/render/math?math=Y is  (0, 1)">
+<img src="https://render.githubusercontent.com/render/math?math=Y (0, 1)">
 
 
 
