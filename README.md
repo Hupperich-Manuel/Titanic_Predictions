@@ -41,7 +41,7 @@ In our example we will
 
 ![equation]$a^2+b^2=c^2$
 
-<img src="https://render.githubusercontent.com/render/math?math=Y is (0, 1)">
+<img src="https://render.githubusercontent.com/render/math?math=Y is  (0, 1)">
 
 
 
