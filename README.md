@@ -29,7 +29,7 @@ Firstly, there was a need to see how ensemble modelling perfromed on the data, a
 
 With the LDA we are going to model the conditional distribution of the independent variable Y (1,0), given the explainatory variables.
 
-To justify the usage of the LDA, a part from having a AUC of 97%, i will point out three main points:
+To justify the usage of the LDA, a part from having a AUC of 97%, there are three reasons to point put:
 * Having binary class, <img src="https://render.githubusercontent.com/render/math?math=Y (0, 1)"> , thwey are considered to be well separated
 
 In our example we will
