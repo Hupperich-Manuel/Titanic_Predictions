@@ -9,7 +9,15 @@ The cleaning of the data, is by far the most challenging part in most of the mac
 
 ### 1.1. Feature Selection
 
+For feature selection, we will go through two main aspects.
+
+The first one will be focus on the identification of multicollinearity in the data and eliminate the explainatory variables which are highly correlated as they will double their effect/importance in the model, and this does not show the reality of the data. Therefore we drop that columns.
+
+
 #### 1.1.1 Multicollinearity
 
 
 #### 1.1.2 Domain Knowledge
+
+
+## 2. Train the Model
