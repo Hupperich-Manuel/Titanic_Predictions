@@ -39,7 +39,7 @@ function isReal (k) {
 In our example we will
 
 
-$`a^2+b^2=c^2`$
+![equation]$a^2+b^2=c^2$
 
 ```math
 a^2+b^2=c^2
