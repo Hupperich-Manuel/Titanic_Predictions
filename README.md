@@ -39,6 +39,7 @@ To properly perform the LDA analysis, and getting so better results than with ot
 
 
 ![Screenshot_2](https://user-images.githubusercontent.com/67901472/143683714-b9fecc0f-4ecf-4ed8-aed7-8eeb4f73a739.png)
+
 _Source: Seaborn Library Python 3.0._
 
 ![Screenshot_1](https://user-images.githubusercontent.com/67901472/143683719-5d7ca72d-5478-4c43-9765-1856218aeca2.png)
