@@ -43,6 +43,7 @@ To properly perform the LDA analysis, and getting so better results than with ot
 _Source: Seaborn Library Python 3.0._
 
 ![Screenshot_1](https://user-images.githubusercontent.com/67901472/143683719-5d7ca72d-5478-4c43-9765-1856218aeca2.png)
+
 _Source: Matplotlib Pyplot Library Python 3.0._
 
 in order to calculate the probability that a certain observation belongs to the _kth_ class, we denote the density function as follows: fk(X) ≡ Pr(X = x|Y = k). So, applying the Bayes theorem to this formula we end up getting 
