@@ -36,7 +36,8 @@ To properly perform the LDA analysis, and getting so better results than with ot
 
 * The classes need to be well separated, which can be difficult to observe in a multidimensional cunundrum.
 * The observations have to follow a mulivariate Gaussian distribution, as it assumes that each feature follows a one-dimensional normal distribution **X ∼ N(μ, Σ)**, with **some** correlation between the pairs (but not so that it could harm the model). Therefore, there was a need to prove this assumption with the Jarque-Bera Normality Test.
-[Jarque Bera]
+
+
 ![Screenshot_2](https://user-images.githubusercontent.com/67901472/143683714-b9fecc0f-4ecf-4ed8-aed7-8eeb4f73a739.png)
 
 ![Screenshot_1](https://user-images.githubusercontent.com/67901472/143683719-5d7ca72d-5478-4c43-9765-1856218aeca2.png)
