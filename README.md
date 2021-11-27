@@ -37,11 +37,12 @@ To properly perform the LDA analysis, and getting so better results than with ot
 * The classes need to be well separated, which can be difficult to observe in a multidimensional cunundrum.
 * The observations have to follow a mulivariate Gaussian distribution, as it assumes that each feature follows a one-dimensional normal distribution **X ∼ N(μ, Σ)**, with **some** correlation between the pairs (but not so that it could harm the model). Therefore, there was a need to prove this assumption with the Jarque-Bera Normality Test.
 [Jarque Bera]
-[Heatmap and distribution picture]
+![Screenshot_2](https://user-images.githubusercontent.com/67901472/143683714-b9fecc0f-4ecf-4ed8-aed7-8eeb4f73a739.png)
 
 in order to calculate the probability that a certain observation belongs to the _kth_ class, we denote the density function as follows: fk(X) ≡ Pr(X = x|Y = k). So, applying the Bayes theorem to this formula we end up getting 
 
-![image](https://user-images.githubusercontent.com/67901472/143683703-e174f414-ecba-4c3f-b0d5-e6e486cbdfa3.png)
+![image](https://user-images.githubusercontent.com/67901472/143683703-e174f414-ecba-4c3f-b0d5-e6e486cbdfa3.png) ![Screenshot_1](https://user-images.githubusercontent.com/67901472/143683719-5d7ca72d-5478-4c43-9765-1856218aeca2.png)
+
 
 
 
