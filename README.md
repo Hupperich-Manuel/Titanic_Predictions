@@ -38,7 +38,8 @@ To properly perform the LDA analysis, and getting so better results than with ot
 * The observations have to follow a mulivariate Gaussian distribution, as it assumes that each feature follows a one-dimensional normal distribution **X ∼ N(μ, Σ)**, with **some** correlation between the pairs (but not so that it could harm the model). Therefore, there was a need to prove this assumption with the Jarque-Bera Normality Test.
 
 
-![Screenshot_2](https://user-images.githubusercontent.com/67901472/143683714-b9fecc0f-4ecf-4ed8-aed7-8eeb4f73a739.png)
+![Screenshot_2](https://user-images.githubusercontent.com/67901472/143683714-b9fecc0f-4ecf-4ed8-aed7-8eeb4f73a739.png) ![jarque bera](https://user-images.githubusercontent.com/67901472/143683856-ab8c8e00-d412-4ca3-8932-5c60c80f4ed8.png)
+
 
 _Source: Seaborn Library Python 3.0._
 
