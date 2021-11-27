@@ -39,9 +39,12 @@ To properly perform the LDA analysis, and getting so better results than with ot
 [Jarque Bera]
 ![Screenshot_2](https://user-images.githubusercontent.com/67901472/143683714-b9fecc0f-4ecf-4ed8-aed7-8eeb4f73a739.png)
 
+![Screenshot_1](https://user-images.githubusercontent.com/67901472/143683719-5d7ca72d-5478-4c43-9765-1856218aeca2.png)
+
+
 in order to calculate the probability that a certain observation belongs to the _kth_ class, we denote the density function as follows: fk(X) ≡ Pr(X = x|Y = k). So, applying the Bayes theorem to this formula we end up getting 
 
-![image](https://user-images.githubusercontent.com/67901472/143683703-e174f414-ecba-4c3f-b0d5-e6e486cbdfa3.png) ![Screenshot_1](https://user-images.githubusercontent.com/67901472/143683719-5d7ca72d-5478-4c43-9765-1856218aeca2.png)
+![image](https://user-images.githubusercontent.com/67901472/143683703-e174f414-ecba-4c3f-b0d5-e6e486cbdfa3.png) 
 
 
 
