@@ -86,10 +86,21 @@ We covered the whole code in a function that returns a dataframe wiht the predic
 The first part was the import of the different libraries and the datasets:
 
 ```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.pipeline import Pipeline
+from sklearn.metrics import roc_curve, auc
+from sklearn.metrics import accuracy_score
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+import warnings
+warnings.filterwarnings("ignore")
+
 df_train = pd.read_csv("train.csv", index_col=0)
 df_test = pd.read_csv("test.csv", index_col=0)
 gender_sub = pd.read_csv("gender_submission.csv", index_col=0)
-
 ```
 
 Then as said previously, there was a need to drop the unecessary columns and so weight onyl the one who truly would add value to our model:
@@ -107,18 +118,6 @@ Since the data could had some Null values in its columns, there was a need to id
 
 
 ```python
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.pipeline import Pipeline
-from sklearn.metrics import roc_curve, auc
-from sklearn.metrics import accuracy_score
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
-import warnings
-warnings.filterwarnings("ignore")
-
 #Was for training set and the test set
 for i in df_test.columns:
     print(i, sum(df_test[i].isnull())/df_test.shape[0])
@@ -135,8 +134,6 @@ df_train['Age'] = age
 
 df_train = pd.get_dummies(df_train, columns=['Pclass'])
 df_test = pd.get_dummies(df_test, columns=['Pclass'])
-
-
 
 age = []
 
@@ -181,15 +178,15 @@ The score was 1.0 which is the highest possible value you can get, getting us to
 
 ## 4. Conclusion
 
-To conclude I would like to thank my partner ![Igancio Gonzalez Granero](https://www.linkedin.com/in/ignacio-gonzalez-granero/), for joining this competition with me. To continuously seek new challenges that get us out of the comfort zone, and makes us improve in every aspect of our lifes are some of the values that define us. Through Data Science competitions, we are enabled to gain a lot of knowledge,which could not be more usefull, when achieving the goals that each of us seeks to accomplish.
+To conclude I would like to thank my partner [Igancio Gonzalez Granero](https://www.linkedin.com/in/ignacio-gonzalez-granero/), for joining this competition with me. To continuously seek new challenges that get us out of the comfort zone, and makes us improve in every aspect of our lifes are some of the values that define us. Through Data Science competitions, we are enabled to gain a lot of knowledge,which could not be more usefull, when achieving the goals that each of us seeks to accomplish.
 
 Have a nice day!
 
 ## 5. References
 
-![Stack Overflow](https://stackoverflow.com/)
-![Introduction to Statistical Learning](https://www.statlearning.com/)
-![Kaggle](https://www.kaggle.com/c/titanic/data?select=test.csv)
+[Stack Overflow](https://stackoverflow.com/)
+[Introduction to Statistical Learning](https://www.statlearning.com/)
+[Kaggle](https://www.kaggle.com/c/titanic/data?select=test.csv)
 
 
 
