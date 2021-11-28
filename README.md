@@ -28,11 +28,11 @@ Firstly, there was a need to see how ensemble modelling perfromed on the data, a
 ## 2.1. Linear Discriminant Analysis
 
 With the LDA we are going to model the conditional distribution of the independent variable Y (1,0), given the explainatory variables.
-The idea behind LDA is to use the logistic regression modeling Pr(Y = k|X = x), but through a less direct approach, which is basically to model the distribution of the features X given Y Pr(X = x|Y = k) and then use the Bayes theorem to flip it to estimate Pr(Y = k|X = x). In other words, instead of predicting what is the probability of surviving or not given certain attributes, the selected algorithm refrases the estimation saying what is the probability that a person has a specific profile, given that she/he has survived or not, and then since some assumptions are fullfilled, we can flip this assumption and estimate the probability. As said, in order to get positive takeaways from the model the data has to follow some assumptions:
+The idea behind LDA is to use the logistic regression modeling Pr(Y = k|X = x), but through a less direct approach, which is basically to model the distribution of the features X given Y Pr(X = x|Y = k) and then use the Bayes theorem to flip it to estimate Pr(Y = k|X = x). In other words, instead of predicting what is the probability of surviving or not given certain attributes, the selected algorithm refrases the estimation saying what is the probability that a person has a specific profile, given that she/he has survived or not, and then since some assumptions are fullfilled, we can flip this assumption and estimate the probability for the test sample. As said, in order to get positive takeaways from the model the data has to follow some assumptions:
 
-* The classes are well separated, which can be difficult to observe in a multidimensional cunundrum.
+* The classes are well separated. However can be difficult to observe in a multidimensional cunundrum.
 
-* The observations follow a mulivariate Gaussian distribution, as it assumes that each feature follows a one-dimensional normal distribution **X ∼ N(μ, Σ)**, with **some** correlation between the pairs (but not so that it could harm the model).
+* The observations follow a mulivariate Gaussian distribution, as it assumes that each feature follows a one-dimensional normal distribution **X ∼ N(μ, Σ)**, with **some** correlation between the pairs.
 
 
 ![Screenshot_2](https://user-images.githubusercontent.com/67901472/143683714-b9fecc0f-4ecf-4ed8-aed7-8eeb4f73a739.png)    ![jarque bera](https://user-images.githubusercontent.com/67901472/143683856-ab8c8e00-d412-4ca3-8932-5c60c80f4ed8.png)
