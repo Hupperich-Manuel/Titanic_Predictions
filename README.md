@@ -1,4 +1,4 @@
-# Titanic_Predictions
+# Titanic Predictions
 Predicted a binary outcome, either survived at the titanic or not, according to different features
 
 The titanic is one of the most iconic and at the same time saddest stories in the history of human beings. There are barely any individuals who are not familiar with its story and how lucky some people were on that liner, because of certain characteristics that they took with them. Whether they were kids or had a higher purchasing power, there was a pattern to follow when predicting the probability of getting a safe boat, leaving unharmed the ship.
