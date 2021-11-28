@@ -73,10 +73,13 @@ When it comes to the evaluation we can see how the error rate was minimized:
 
 ![Confusion Matrix](https://user-images.githubusercontent.com/67901472/143763875-63c8829d-7abd-4e46-a2ec-cd2812572c83.png)
 
+_Source: Matplotlib Pyplot Library Python 3.0._
+
 Looking at the sensitivity (True positive rate) and the specificity (false positive rate), which characterize the performance of our LDA, compared to other classifiers, we observe that it is almost perfect. The AUC is about 97%, which shows that there is a large increase in true positives with a little to no change in false positives, the model fits almost perfectly.
 
 ![image](https://user-images.githubusercontent.com/67901472/143763993-248f548d-6144-4859-9aeb-d7fe45c8457a.png)
 
+_Source: Matplotlib Pyplot Library Python 3.0._
 
 ## 3. Code the LDA
 
