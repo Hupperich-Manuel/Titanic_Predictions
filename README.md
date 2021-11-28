@@ -106,7 +106,7 @@ df_test = pd.read_csv("test.csv", index_col=0)
 gender_sub = pd.read_csv("gender_submission.csv", index_col=0)
 ```
 
-Then as said previously, there was a need to drop the unecessary columns and so weight onyl the one who truly would add value to our model:
+Then as said previously, there was a need to drop the unnecessary columns and so weigh only the one who truly would add value to our model:
 
 ```python
 #Feature Selection
