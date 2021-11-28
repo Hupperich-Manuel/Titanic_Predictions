@@ -9,28 +9,26 @@ The cleaning of the data, is by far the most challenging part in most of the mac
 
 ### 1.1. Feature Selection
 
-For feature selection, we will go through two main aspects.
+For feature selection, we will go through three main aspects.
 
-The first one will be focus on the identification of multicollinearity in the data and eliminate the explainatory variables which are highly correlated as they will double their effect/importance in the model, and this does not show the reality of the data. Therefore we drop that columns.
+The first approach tried to identify the features that would add no value to our classification, as they are not significant. Those features where ID of the Passenger, the Name of this, the Embarked location and the Ticket number. You might could argue that the Ticket number could be an indicator to the purchasing power of the Passenger, however, there where other variables such as Fare, that actually delivered the Price of the ordered Cabin. Lastly, after having trianed our model, there was evidence that the Cabin feature did not at good job on the model since there where a lot of Null values contained in it (even replacing the values with dummy variables, this did not improved the perfromance).
 
+The second one will be focus on the identification of multicollinearity in the data and eliminate the explainatory variables which are highly correlated as they will double their effect/importance in the model, and this does not show the reality of the data. Therefore we drop that columns.
 
-#### 1.1.1 Multicollinearity
-
-
-#### 1.1.2 Domain Knowledge
+The third approach was more focused on the normalization of the data. Since the data combined Categorical and Continuous Variables, there was a need to rescale the data so that there was no imbalances wile training it.
+To do so, a pipeline was coded, that aimed to pass the data through a Standart Scaling (setting the mean = 0 and standart deviation = 1). The a Principal Component Analysis (PCA) was done, since the chosen algorithm could easily overfitt the data, through the prior dimensionality reduction, we can tackle this issue (there could have been other dimensionality reducers as the regularized LDA, which makes use of the shrinkage method, but it worked without this more complex approach).
 
 
 ## 2. Train the Model
 
-Firstly, there was a need to see how ensemble modelling perfromed on the data, and see if we could identfy the outperfromers beyond the models. The way this was appoached was through a AUC analysis, through which it was easy to identify the realtionship between sensitity
-
+The way this conclusion was approached was through an initially study of the data, and see its behaviour. As it could be observed there where some patterns that indicated to classifiers such as the Linear Discriminant Analysis (LDA), Logistic Regression or the Bayes Classifier. Therefore an ensemble modelling was a good option to quickly identify the performance of those models, and start to eliminate the underperforming ones. Finally, the model that best classified the data ended up to be LDA, which will be studied in deep in the next sections.
 
 ## 2.1. Linear Discriminant Analysis
 
-With the LDA we are going to model the conditional distribution of the independent variable Y (1,0), given the explainatory variables.
+With the LDA we are going to model the conditional distribution of the independent variable Y (1,0), given the explainatory variables X.
 The idea behind LDA is to use the logistic regression modeling Pr(Y = k|X = x), but through a less direct approach, which is basically to model the distribution of the features X given Y Pr(X = x|Y = k) and then use the Bayes theorem to flip it to estimate Pr(Y = k|X = x). In other words, instead of predicting what is the probability of surviving or not given certain attributes, the selected algorithm refrases the estimation saying what is the probability that a person has a specific profile, given that she/he has survived or not, and then since some assumptions are fullfilled, we can flip this assumption and estimate the probability for the test sample. As said, in order to get positive takeaways from the model the data has to follow some assumptions:
 
-* The classes are well separated. However can be difficult to observe in a multidimensional cunundrum.
+* The classes are well separated.
 
 * The observations follow a mulivariate Gaussian distribution, as it assumes that each feature follows a one-dimensional normal distribution **X ∼ N(μ, Σ)**, with **some** correlation between the pairs.
 
@@ -50,23 +48,64 @@ LDA reduces the dimensionallity of the data (similar to PCA), with the main diff
 In the case of a dataset with more than one explanatory variable, we will handle the maximization through a mean vector and a covariance matrix, aiming not only to maximize the means but to minimize the scatter.
 
 
-in order to calculate the probability that a certain observation belongs to the _kth_ class, we denote the density function as follows: fk(X) ≡ Pr(X = x|Y = k). So, applying the Bayes theorem to this formula we end up getting 
+In order to calculate the probability that a certain observation belongs to the _kth_ class, we denote the density function as follows: fk(X) ≡ Pr(X = x|Y = k). So, applying the Bayes theorem to this formula we end up getting 
 
 ![image](https://user-images.githubusercontent.com/67901472/143683703-e174f414-ecba-4c3f-b0d5-e6e486cbdfa3.png) 
 
-- fk(X) is large if there is a high probability that the observation _x_ of the _kth_ class belongs to the feature X, and vice versa.
-- 
+Where:
+- πk is the prior probability that an observation belongs to _kth_ class (which is simple in this case as we compute the fraction of the training observations that belong to the _kth_ class).
+- when it comes to the estimation of fk(X) we will have to see if we can approximate the Bayes classifier (for a given observation, which class maximizes pk(X), while at the same time reduces the error rate).
+  * The density function fk(X), should be large if there is a high probability that the observation _X_ belongs to the _kth_ class, and viceversa.
+
+Given that we have more than one feature we will dnote the multivariate Gaussian density function as:
+
+![image](https://user-images.githubusercontent.com/67901472/143763437-19bb1c64-05c6-4059-9b88-be887929e8bd.png)
+
+Where:
+- μ is a vector of means of the variables
+- Σ is the covariance matrix of the variables
+
+Now we only have to replace this formula in the Bayes formula, which I previously mentioned, and see what is the maximum value of δk(x) = xT Σ−1μk − 1/2μTk Σ−1μk + log πk (LDA depends on the linear combination of the elements of x) given an observatiopn classified as a _kth_ class.
+
+The decision boundaries are the only points where the porbability to belong to one class is equal to one belonging to the other. In our case we will have one decision boundary, as we only have 2 classes.
+
+When it comes to the evaluation we can see how the error rate was minimized:
+
+![Confusion Matrix](https://user-images.githubusercontent.com/67901472/143763875-63c8829d-7abd-4e46-a2ec-cd2812572c83.png)
+
+Looking at the sensitivity (True positive rate) and the specificity (false positive rate), which characterize the performance of our LDA, compared to other classifiers, we observe that it is almost perfect. The AUC is about 97%, shows that there is a large increase in true positives with a little to no change in false positives, the model fits almost perfectly.
+
+![image](https://user-images.githubusercontent.com/67901472/143763993-248f548d-6144-4859-9aeb-d7fe45c8457a.png)
+
+
+## 3. Code the LDA
+
+Now we are entering into the interesting part of this study, the code.
+We covered the whole code in a function that returns a dataframe wiht the predicitons and the Passenger_ID. In this section we will break up the code into its components explaning so each step.
+
+The first part was the import of the different libraries and the datasets:
+
+```python
+df_train = pd.read_csv("train.csv", index_col=0)
+df_test = pd.read_csv("test.csv", index_col=0)
+gender_sub = pd.read_csv("gender_submission.csv", index_col=0)
+
+```
 
 
 
-To justify the usage of the LDA, a part from having a AUC of 97%, there are three reasons to point put:
-* Having binary class, <img src="https://render.githubusercontent.com/render/math?math=Y (0, 1)"> , they are considered to be well separated
-* Since the number of observations is relatively small and the distribution of features is approximatelly normal, the choose of LDA returns better results that with other binary classification models. Every feature is significant in the Jarque-Bera test and the distribution of the observation is randomly distributed between 0 and 1 (after dimensionality reduction).
-I,mages, jarque-bera and dispersion
 
 
 
-In our example we will
+
+
+
+
+
+
+
+
+
 
 
 
