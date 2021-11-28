@@ -177,7 +177,7 @@ y_hat = search.predict(test_X)
 score = search.score(test_X, test_Y)
 #print("LDA Score: %.02f"%(score))
 ```
-The score was 1.0 which is the highest possible value you can get, getting us to the top 100 performers of the Kaggle competition.
+The score was 1.0 which is the highest possible value you can get, getting us to the top 170 performers of the Kaggle competition.
 
 ## 4. Conclusion
 
