@@ -184,9 +184,9 @@ Have a nice day!
 
 ## 5. References
 
-[Stack Overflow](https://stackoverflow.com/)
-[Introduction to Statistical Learning](https://www.statlearning.com/)
-[Kaggle](https://www.kaggle.com/c/titanic/data?select=test.csv)
+* [Stack Overflow](https://stackoverflow.com/)
+* [Introduction to Statistical Learning](https://www.statlearning.com/)
+* [Kaggle](https://www.kaggle.com/c/titanic/data?select=test.csv)
 
 
 
