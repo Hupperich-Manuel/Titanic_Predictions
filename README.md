@@ -92,19 +92,104 @@ gender_sub = pd.read_csv("gender_submission.csv", index_col=0)
 
 ```
 
+Then as said previously, there was a need to drop the unecessary columns and so weight onyl the one who truly would add value to our model:
+
+```python
+#Feature Selection
+df_test = pd.merge(df_test, gender_sub, left_index=True, right_index=True) #merges the test set to see if there are missing values
+df_test['Sex'] = df_test['Sex'].replace("male", 0).replace("female", 1) #binary values for the 'Sex' feature
+df_train['Sex'] = df_train['Sex'].replace("male", 0).replace("female", 1)
+df_train.drop(['Name', 'Embarked', 'Ticket', 'Cabin'], 1, inplace=True) #dropping the irrelevant variables
+df_test.drop(['Name', 'Embarked', 'Ticket','Cabin'], 1, inplace=True)
+```
+
+Since the data could had some Null values in its columns, there was a need to identify if the frequency of the Null Values was significant (basically to make a decision wether to eliminate the rows or not). Moreover, since 'Pclass' had three categorical variables, whcih refered to the ticket class the Passenger travelled with, dummy variables where created for simplification.
+
+
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.pipeline import Pipeline
+from sklearn.metrics import roc_curve, auc
+from sklearn.metrics import accuracy_score
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+import warnings
+warnings.filterwarnings("ignore")
+
+#Was for training set and the test set
+for i in df_test.columns:
+    print(i, sum(df_test[i].isnull())/df_test.shape[0])
+    
+age = []
+
+for i in df_train['Age']:
+    if str(i) == 'nan':
+        age.append(df_train['Age'].mean())
+    else:
+        age.append(i)
+
+df_train['Age'] = age
+
+df_train = pd.get_dummies(df_train, columns=['Pclass'])
+df_test = pd.get_dummies(df_test, columns=['Pclass'])
 
 
 
+age = []
 
+for i in df_test['Age']:
+    if str(i) == 'nan':
+        age.append(df_test['Age'].mean())
+    else:
+        age.append(i)
 
+df_test['Age'] = age
 
+df_test.dropna(inplace=True)
+```
 
+Finally, the pandas DataFrame was converted into arrays to be trained on the sklearn libraries
 
+```python
+ train_X, train_y = np.array(df_train[df_train.columns[1:]]),  np.array(df_train[df_train.columns[0]])
+ test_X, test_Y =  np.array(df_test[df_test.columns[:-1]]), np.array(df_test[df_test.columns[-1:]])
 
+ train_Y = np.expand_dims(train_y, axis=0) #this converts the shape from (15,) into (15,1), which need to be done, otherwise the sklearn libraries will return an error
 
+ train_Y = train_Y.T
+```
 
+Now the data was ready to be trained. To do a Pipeline was coded that Standardized, Reduced and Trained the Data with the Linear Discriminant Analysis algorithm (with its standard parameters), through cross validation of 5 and the return of the train score. After that we fitted the training X features with the training Y ('Survived'), and evaluated the predicitons wiht the score.
 
+```python
+pipe = Pipeline([('scaler', StandardScaler()),('pca',PCA()),('model',LinearDiscriminantAnalysis())])
 
+params = {'model__solver':['svd']}
+
+search = GridSearchCV(pipe, param_grid=params, cv = 5, return_train_score=True)
+
+search.fit(train_X, train_Y)
+y_hat = search.predict(test_X)
+
+score = search.score(test_X, test_Y)
+#print("LDA Score: %.02f"%(score))
+```
+The score was 1.0 which is the highest possible value you can get, getting us to the top 100 performers of the Kaggle competition.
+
+## 4. Conclusion
+
+To conclude I would like to thank my partner ![Igancio Gonzalez Granero](https://www.linkedin.com/in/ignacio-gonzalez-granero/), for joining this competition with me. To continuously seek new challenges that get us out of the comfort zone, and makes us improve in every aspect of our lifes are some of the values that define us. Through Data Science competitions, we are enabled to gain a lot of knowledge,which could not be more usefull, when achieving the goals that each of us seeks to accomplish.
+
+Have a nice day!
+
+## 5. References
+
+![Stack Overflow](https://stackoverflow.com/)
+![Introduction to Statistical Learning](https://www.statlearning.com/)
+![Kaggle](https://www.kaggle.com/c/titanic/data?select=test.csv)
 
 
 
